@@ -25,18 +25,23 @@ pip install -r requirements.txt
 ```
 ## How to use
 
-- For downloading photos from SpaceX use the command:
+1. For downloading photos from SpaceX use the command:
 ```python
 python3 fetch_spacex.py
 ```
-- For downloading photos from NASA use the command:
+- Enter the name of folder where you want to download the images
+  
+2. For downloading photos from NASA use the command:
 ```python
 python3 fetch_nasa.py
 ```
-- Publish one of the downloaded photos once a day on your Telegram channel:
+- Enter the name of folder where you want to download the images
+  
+3. Publish one of the downloaded photos once a day on your Telegram channel:
 ```python
 python3 publish_images.py
 ```
+- Enter the name of folder from which you want to publish the images
 
 ### Project Goals
 

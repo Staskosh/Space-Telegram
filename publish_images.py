@@ -6,19 +6,20 @@ import telegram
 from dotenv import load_dotenv
 
 
-def public_images():
-  all_photos = listdir("images")
+def public_images(directory):
+  all_photos = listdir(directory)
   while True:
     for number in range(len(all_photos)):
       time.sleep(86400)
-      bot.send_photo(chat_id=os.getenv('TG_CHAT_ID'), photo=open(f'images/{all_photos[number]}', "rb"), timeout=100)
+      bot.send_photo(chat_id=os.getenv('TG_CHAT_ID'), photo=open(f'{directory}/{all_photos[number]}', "rb"), timeout=100)
 
 
 def main():
     load_dotenv()
+    directory = input('Введите название папки из которой необходимо опубликовать фото')
     bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
     updates = bot.get_updates()
-    photo_post = public_images()
+    photo_post = public_images(directory)
 
 
 if __name__ == '__main__':
