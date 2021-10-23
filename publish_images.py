@@ -5,9 +5,6 @@ from os import listdir
 import telegram
 from dotenv import load_dotenv
 
-bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
-updates = bot.get_updates()
-
 
 def public_images():
   all_photos = listdir("images")
@@ -19,6 +16,8 @@ def public_images():
 
 def main():
     load_dotenv()
+    bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
+    updates = bot.get_updates()
     photo_post = public_images()
 
 

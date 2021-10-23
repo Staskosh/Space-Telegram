@@ -4,8 +4,6 @@ import requests
 from dotenv import load_dotenv
 from fetch_spacex import download_file
 
-load_dotenv()
-
 
 def fetch_APOD_last_days():
   url = "https://api.nasa.gov/planetary/apod/"
@@ -37,6 +35,7 @@ def fetch_EPIC():
 
 
 def main():
+    load_dotenv()
     apod_photos = fetch_APOD_last_days()
     epic_photos = fetch_EPIC()
 

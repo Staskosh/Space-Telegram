@@ -4,8 +4,6 @@ from urllib.parse import urlparse
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
-
 
 def define_ext(url):
   url_parsed = urlparse(url)
@@ -36,6 +34,7 @@ def fetch_spacex_last_launch():
     download_files = download_file("images", url, photo_number)
 
 def main():
+    load_dotenv()
     spacex_photos = fetch_spacex_last_launch()
 
 
