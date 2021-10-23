@@ -2,12 +2,12 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from dowload_images import download_file
+from download_images import download_file
 
 
-def fetch_APOD_last_days(directory):
+def fetch_APOD_last_days(directory, API_KEY_NASA):
   url = "https://api.nasa.gov/planetary/apod/"
-  payload = {"api_key": os.getenv('API_KEY_NASA'),
+  payload = {"api_key": API_KEY_NASA,
              "count": 50, }
   response = requests.get(url, params=payload)
   photo_links = response.json()
@@ -19,7 +19,7 @@ def fetch_APOD_last_days(directory):
     download_files = download_file(directory, url, photo_number)
 
 
-def fetch_EPIC(directory):
+def fetch_EPIC(directory, API_KEY_NASA):
   url_original = "https://epic.gsfc.nasa.gov/api/natural"
   response = requests.get(url_original)
   photo_urls = []
@@ -28,7 +28,7 @@ def fetch_EPIC(directory):
     year = parameter["date"][:4]
     month = parameter["date"][5:7]
     day = parameter["date"][8:10]
-    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png?api_key=DEMO_KEY'
+    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png?api_key={API_KEY_NASA}'
     photo_urls.append(photo_url)
   for photo_number, url in enumerate(photo_urls):
       download_files = download_file(directory, url, photo_number)
@@ -36,9 +36,10 @@ def fetch_EPIC(directory):
 
 def main():
     load_dotenv()
+    API_KEY_NASA = os.getenv('API_KEY_NASA')
     directory = input('Введите название папки для скачивания фото')
-    apod_photos = fetch_APOD_last_days(directory)
-    epic_photos = fetch_EPIC(directory)
+    apod_photos = fetch_APOD_last_days(directory, API_KEY_NASA)
+    epic_photos = fetch_EPIC(directory, API_KEY_NASA)
 
 
 if __name__ == '__main__':
