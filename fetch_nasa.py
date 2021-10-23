@@ -2,7 +2,7 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from fetch_spacex import download_file
+from dowload_images import download_file
 
 
 def fetch_APOD_last_days():
