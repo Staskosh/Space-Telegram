@@ -33,9 +33,9 @@ python3 fetch_spacex.py
 ```python
 python3 fetch_nasa.py
 ```
-- Public one of the downloaded photos once a day on your Telegram channel:
+- Publish one of the downloaded photos once a day on your Telegram channel:
 ```python
-python3 public_images.py
+python3 publish_images.py
 ```
 
 ### Project Goals
