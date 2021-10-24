@@ -10,7 +10,7 @@ def define_ext(url):
   return file_ext
 
 
-def download_file(directory, url, quantity):
+def download_file(directory, url, quantity, payload):
   if not os.path.exists(directory):
       try:
           os.makedirs(directory)
@@ -19,7 +19,7 @@ def download_file(directory, url, quantity):
               raise
   file_ext = define_ext(url)
   filename = f"{directory}/spacex{quantity}{file_ext}"
-  response = requests.get(url)
+  response = requests.get(url, params=payload)
   response.raise_for_status()
   with open(filename, 'wb') as file:
       file.write(response.content)

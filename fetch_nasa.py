@@ -12,7 +12,7 @@ def fetch_APOD_last_days(directory, API_KEY_NASA):
   response = requests.get(url, params=payload)
   for photo_number, photo_link in enumerate(response.json()):
       url = photo_link["url"]
-      download_files = download_file(directory, url, photo_number)
+      download_files = download_file(directory, url, photo_number, payload)
 
 
 def fetch_EPIC(directory, API_KEY_NASA):
@@ -23,8 +23,9 @@ def fetch_EPIC(directory, API_KEY_NASA):
     year = parameter["date"][:4]
     month = parameter["date"][5:7]
     day = parameter["date"][8:10]
-    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png?api_key={API_KEY_NASA}'
-    download_files = download_file(directory, photo_url, photo_number)
+    payload = {"api_key": API_KEY_NASA }
+    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{year}/{month}/{day}/png/{image}.png'
+    download_files = download_file(directory, photo_url, photo_number, payload)
 
 
 def main():

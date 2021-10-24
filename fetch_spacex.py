@@ -6,7 +6,8 @@ def fetch_spacex_last_launch(directory):
   response = requests.get(space_x_API_url)
   photo_links = response.json()["links"]["flickr_images"]
   for photo_number, url in enumerate(photo_links):
-    download_files = download_file(directory, url, photo_number)
+    payload = {'': ''}
+    download_files = download_file(directory, url, photo_number, payload)
 
 def main():
     directory = input('Введите название папки для скачивания фото')
