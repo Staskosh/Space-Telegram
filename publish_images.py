@@ -6,7 +6,7 @@ import telegram
 from dotenv import load_dotenv
 
 
-def public_images(directory, bot):
+def publish_images(directory, bot):
   all_photos = listdir(directory)
   while True:
     for number in range(len(all_photos)):
