@@ -10,7 +10,7 @@ def publish_images(directory, bot):
   all_photos = listdir(directory)
   while True:
     for number in range(len(all_photos)):
-      time.sleep(3)
+      time.sleep(86400)
       with open(f'{directory}/{all_photos[number]}', "rb") as photo:
           bot.send_photo(chat_id=os.getenv('TG_CHAT_ID'), photo=photo, timeout=100)
 
