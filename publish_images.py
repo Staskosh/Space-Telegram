@@ -19,8 +19,7 @@ def main():
     load_dotenv()
     directory = os.getenv('PHOTO_FOLDER')
     bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
-    updates = bot.get_updates()
-    photo_post = public_images(directory, bot)
+    publish_images(directory, bot)
 
 
 if __name__ == '__main__':
