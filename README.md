@@ -19,6 +19,10 @@ This script allows downloading photos from SpaceX, NASA, and posting such kind o
   ```python
   TG_CHAT_ID='here is your chat id'
   ```
+- Write the name of folder where you would like to download photos in the file '.ENV' as
+  ```python
+  PHOTO_FOLDER='here is your name of folder'
+  ```
 - Then use `pip` (or `pip3`, if there is a conflict with Python2) to install dependencies:
 ```python
 pip install -r requirements.txt
@@ -29,19 +33,16 @@ pip install -r requirements.txt
 ```python
 python3 fetch_spacex.py
 ```
-- Enter the name of folder where you want to download the images
   
 2. For downloading photos from NASA use the command:
 ```python
 python3 fetch_nasa.py
 ```
-- Enter the name of folder where you want to download the images
   
 3. Publish one of the downloaded photos once a day on your Telegram channel:
 ```python
 python3 publish_images.py
 ```
-- Enter the name of folder from which you want to publish the images
 
 ### Project Goals
 

@@ -31,7 +31,7 @@ def fetch_EPIC(directory, API_KEY_NASA):
 def main():
     load_dotenv()
     API_KEY_NASA = os.getenv('API_KEY_NASA')
-    directory = input('Введите название папки для скачивания фото')
+    directory = os.getenv('PHOTO_FOLDER')
     apod_photos = fetch_APOD_last_days(directory, API_KEY_NASA)
     epic_photos = fetch_EPIC(directory, API_KEY_NASA)
 

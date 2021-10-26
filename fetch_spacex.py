@@ -1,4 +1,7 @@
+import os
+
 import requests
+from dotenv import load_dotenv
 from download_images import download_file
 
 def fetch_spacex_last_launch(directory):
@@ -10,7 +13,8 @@ def fetch_spacex_last_launch(directory):
     download_files = download_file(directory, url, photo_number, payload)
 
 def main():
-    directory = input('Введите название папки для скачивания фото')
+    load_dotenv()
+    directory = os.getenv('PHOTO_FOLDER')
     spacex_photos = fetch_spacex_last_launch(directory)
 
 

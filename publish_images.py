@@ -17,7 +17,7 @@ def publish_images(directory, bot):
 
 def main():
     load_dotenv()
-    directory = input('Введите название папки из которой необходимо опубликовать фото')
+    directory = os.getenv('PHOTO_FOLDER')
     bot = telegram.Bot(token=os.getenv('TG_TOKEN'))
     updates = bot.get_updates()
     photo_post = public_images(directory, bot)
