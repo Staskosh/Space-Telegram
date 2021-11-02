@@ -18,7 +18,7 @@ def download_file(directory, url, quantity, payload):
           if error.errno != errno.EEXIST:
               raise
   file_ext = define_ext(url)
-  filename = f"{directory}/spacex{quantity}{file_ext}"
+  filename = f'{directory}/spacex{quantity}{file_ext}'
   response = requests.get(url, params=payload)
   response.raise_for_status()
   with open(filename, 'wb') as file:
