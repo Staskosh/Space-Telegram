@@ -11,12 +11,13 @@ def fetch_spacex_given_launch(directory, launch_number):
   photo_links = response.json()['links']['flickr_images']
   for photo_number, url in enumerate(photo_links):
     payload = None
-    download_files = download_file(directory, url, photo_number, payload)
+    download_file(directory, url, photo_number, payload)
 
 def main():
     load_dotenv()
     launch_number = 67
     directory = os.getenv('PHOTO_FOLDER')
+    make_directory(directory)
     fetch_spacex_given_launch(directory, launch_number)
 
 

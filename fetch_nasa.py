@@ -3,6 +3,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from download_images import download_file
+from download_images import make_directory
 from datetime import datetime
 
 
@@ -14,7 +15,7 @@ def fetch_APOD_last_days(directory, API_KEY_NASA):
   response.raise_for_status()
   for photo_number, photo_link in enumerate(response.json()):
       url = photo_link['url']
-      download_files = download_file(directory, url, photo_number, payload)
+      download_file(directory, url, photo_number, payload)
 
 
 def fetch_EPIC(directory, API_KEY_NASA):
@@ -26,14 +27,15 @@ def fetch_EPIC(directory, API_KEY_NASA):
     date_parameters = datetime.strptime(parameter['date'], '%Y-%m-%d %H:%M:%S')
     payload = {'api_key': API_KEY_NASA}
     photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{date_parameters.year}/{date_parameters.month}/{date_parameters.day}/png/{image}.png'
-    download_files = download_file(directory, photo_url, photo_number, payload)
+    download_file(directory, photo_url, photo_number, payload)
 
 
 def main():
     load_dotenv()
     API_KEY_NASA = os.getenv('API_KEY_NASA')
     directory = os.getenv('PHOTO_FOLDER')
-    #fetch_APOD_last_days(directory, API_KEY_NASA)
+    make_directory(directory)
+    fetch_APOD_last_days(directory, API_KEY_NASA)
     fetch_EPIC(directory, API_KEY_NASA)
 
 
