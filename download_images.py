@@ -11,12 +11,7 @@ def define_ext(url):
 
 
 def download_file(directory, url, quantity, payload):
-  if not os.path.exists(directory):
-      try:
-          os.makedirs(directory)
-      except OSError as error:
-          if error.errno != errno.EEXIST:
-              raise
+  os.makedirs(directory, exist_ok=True)
   file_ext = define_ext(url)
   filename = f'{directory}/spacex{quantity}{file_ext}'
   response = requests.get(url, params=payload)
