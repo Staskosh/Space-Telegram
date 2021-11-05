@@ -6,9 +6,9 @@ from download_images import download_file, make_directory
 
 
 def fetch_spacex_launch(directory, launch_number):
-    API_url = f'https://api.spacexdata.com/v3/launches/{launch_number}'
+    api_url = f'https://api.spacexdata.com/v3/launches/{launch_number}'
     source_name = 'spacex'
-    response = requests.get(API_url)
+    response = requests.get(api_url)
     response.raise_for_status()
     photo_links = response.json()['links']['flickr_images']
     for photo_number, url in enumerate(photo_links):
