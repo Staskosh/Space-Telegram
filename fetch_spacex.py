@@ -2,17 +2,18 @@ import os
 
 import requests
 from dotenv import load_dotenv
-from download_images import download_file
-from download_images import make_directory
+from download_images import download_file, make_directory
+
 
 def fetch_spacex_launch(directory, launch_number):
-  API_url = f'https://api.spacexdata.com/v3/launches/{launch_number}'
-  source_name = 'spacex'
-  response = requests.get(API_url)
-  response.raise_for_status()
-  photo_links = response.json()['links']['flickr_images']
-  for photo_number, url in enumerate(photo_links):
-    download_file(directory, url, source_name, photo_number, payload=None)
+    API_url = f'https://api.spacexdata.com/v3/launches/{launch_number}'
+    source_name = 'spacex'
+    response = requests.get(API_url)
+    response.raise_for_status()
+    photo_links = response.json()['links']['flickr_images']
+    for photo_number, url in enumerate(photo_links):
+        download_file(directory, url, source_name, photo_number, payload=None)
+
 
 def main():
     load_dotenv()
