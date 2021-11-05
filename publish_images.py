@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 def publish_images(directory, bot, all_photos):
   while True:
-    for index, photo in enumerate(all_photos):
+    for photo in all_photos:
       time.sleep(86400)
       with open(f'{directory}/{photo}', 'rb') as photo:
           bot.send_photo(chat_id=os.getenv('TG_CHAT_ID'), photo=photo, timeout=100)

@@ -25,8 +25,9 @@ def fetch_EPIC(directory, API_KEY_NASA):
   for photo_number, parameter in enumerate(response.json()):
     image = parameter['image']
     date_parameters = datetime.strptime(parameter['date'], '%Y-%m-%d %H:%M:%S')
+    date_parameters_formatted = date_parameters.strftime('%Y/%m/%d')
     payload = {'api_key': API_KEY_NASA}
-    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{date_parameters.year}/{date_parameters.month}/{date_parameters.day}/png/{image}.png'
+    photo_url = f'https://api.nasa.gov/EPIC/archive/natural/{date_parameters_formatted}/png/{image}.png'
     download_file(directory, photo_url, photo_number, payload)
 
 
