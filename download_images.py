@@ -5,8 +5,8 @@ import requests
 
 
 def define_photo_name(url, source_name, photo_number):
-    url_parsed = urlparse(url)
-    file_ext = os.path.splitext(url_parsed.path)[1]
+    parsed_url = urlparse(url)
+    file_ext = os.path.splitext(parsed_url.path)[1]
     filename = f'{source_name}{photo_number}.{file_ext}'
     return filename
 

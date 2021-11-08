@@ -19,17 +19,17 @@ def fetch_APOD_last_days(directory, api_key_nasa):
 
 
 def fetch_EPIC(directory, api_key_nasa):
-    url_original = 'https://epic.gsfc.nasa.gov/api/natural'
+    original_url = 'https://epic.gsfc.nasa.gov/api/natural'
     source_name = 'nasa_epic'
-    response = requests.get(url_original)
+    response = requests.get(original_url)
     response.raise_for_status()
     for photo_number, photo_data in enumerate(response.json()):
         image = photo_data['image']
         date_parameters = datetime.strptime(photo_data['date'], '%Y-%m-%d %H:%M:%S')
-        date_parameters_formatted = date_parameters.strftime('%Y/%m/%d')
+        formatted_date = date_parameters.strftime('%Y/%m/%d')
         payload = {'api_key': api_key_nasa}
         photo_url = f'https://api.nasa.gov/EPIC/archive/'
-        +'natural/{date_parameters_formatted}/png/{image}.png'
+        +'natural/{formatted_date}/png/{image}.png'
         download_file(directory, photo_url, source_name, photo_number, payload)
 
 
