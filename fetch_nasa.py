@@ -37,7 +37,7 @@ def main():
     load_dotenv()
     api_key_nasa = os.getenv('API_KEY_NASA')
     directory = os.getenv('PHOTO_FOLDER')
-    make_directory(directory)
+    os.makedirs(directory, exist_ok=True)
     fetch_APOD_last_days(directory, api_key_nasa)
     fetch_EPIC(directory, api_key_nasa)
 

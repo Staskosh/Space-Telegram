@@ -19,7 +19,7 @@ def main():
     load_dotenv()
     launch_number = 67
     directory = os.getenv('PHOTO_FOLDER')
-    make_directory(directory)
+    os.makedirs(directory, exist_ok=True)
     fetch_spacex_launch(directory, launch_number)
 
 

@@ -11,10 +11,6 @@ def define_photo_name(url, source_name, quantity):
     return filename
 
 
-def make_directory(directory):
-    os.makedirs(directory, exist_ok=True)
-
-
 def download_file(directory, url, source_name, quantity, payload):
     filename = define_photo_name(url, source_name, quantity)
     file_path = f'{directory}/{filename}'
