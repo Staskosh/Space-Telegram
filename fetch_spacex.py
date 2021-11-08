@@ -12,7 +12,7 @@ def fetch_spacex_launch(directory, launch_number):
     response.raise_for_status()
     photo_links = response.json()['links']['flickr_images']
     for photo_number, url in enumerate(photo_links):
-        download_file(directory, url, source_name, photo_number, payload=None)
+        download_file(directory, url, source_name, photo_number)
 
 
 def main():

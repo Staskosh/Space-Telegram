@@ -11,7 +11,7 @@ def define_photo_name(url, source_name, photo_number):
     return filename
 
 
-def download_file(directory, url, source_name, photo_number, payload):
+def download_file(directory, url, source_name, photo_number, payload=None):
     filename = define_photo_name(url, source_name, photo_number)
     file_path = f'{directory}/{filename}'
     response = requests.get(url, params=payload)
