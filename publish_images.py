@@ -10,8 +10,8 @@ def publish_images(directory, bot, chat_id, photos):
     while True:
         for photo in photos:
             time.sleep(86400)
-        with open(f'{directory}/{photo}', 'rb') as photo:
-            bot.send_photo(chat_id=chat_id, photo=photo, timeout=100)
+            with open(f'{directory}/{photo}', 'rb') as photo:
+                bot.send_photo(chat_id=chat_id, photo=photo, timeout=100)
 
 
 def main():
