@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from download_images import download_file, make_directory
 
 
-def fetch_APOD_last_days(directory, api_key_nasa):
+def fetch_apod_last_days(directory, api_key_nasa):
     url = 'https://api.nasa.gov/planetary/apod/'
     source_name = 'nasa_apod'
     payload = {'api_key': api_key_nasa,
@@ -18,7 +18,7 @@ def fetch_APOD_last_days(directory, api_key_nasa):
         download_file(directory, url, source_name, photo_number, payload)
 
 
-def fetch_EPIC(directory, api_key_nasa):
+def fetch_epic(directory, api_key_nasa):
     original_url = 'https://epic.gsfc.nasa.gov/api/natural'
     source_name = 'nasa_epic'
     response = requests.get(original_url)
@@ -38,8 +38,8 @@ def main():
     api_key_nasa = os.getenv('API_KEY_NASA')
     directory = os.getenv('PHOTO_FOLDER')
     os.makedirs(directory, exist_ok=True)
-    fetch_APOD_last_days(directory, api_key_nasa)
-    fetch_EPIC(directory, api_key_nasa)
+    fetch_apod_last_days(directory, api_key_nasa)
+    fetch_epic(directory, api_key_nasa)
 
 
 if __name__ == '__main__':
