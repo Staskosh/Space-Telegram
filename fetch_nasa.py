@@ -23,9 +23,9 @@ def fetch_EPIC(directory, api_key_nasa):
     source_name = 'nasa_epic'
     response = requests.get(url_original)
     response.raise_for_status()
-    for photo_number, parameter in enumerate(response.json()):
-        image = parameter['image']
-        date_parameters = datetime.strptime(parameter['date'], '%Y-%m-%d %H:%M:%S')
+    for photo_number, photo_data in enumerate(response.json()):
+        image = photo_data['image']
+        date_parameters = datetime.strptime(photo_data['date'], '%Y-%m-%d %H:%M:%S')
         date_parameters_formatted = date_parameters.strftime('%Y/%m/%d')
         payload = {'api_key': api_key_nasa}
         photo_url = f'https://api.nasa.gov/EPIC/archive/'
